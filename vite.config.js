@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => {
             const url = new URL(path.replace(/^\/steam-api/, ''), 'http://x')
             url.searchParams.set('key', env.STEAM_API_KEY) // key added here, server-side
+            if (!url.searchParams.has('steamid')) url.searchParams.set('steamid', env.STEAM_ID) // default to your own SteamID
             return url.pathname + url.search
           },
         },

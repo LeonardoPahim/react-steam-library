@@ -13,7 +13,7 @@ function UserList(){
 
     useEffect(() => {
         async function loadGames(){
-            const res = await fetch('/steam-api/IPlayerService/GetOwnedGames/v1/?steamid=76561198030114476&include_appinfo=true')
+            const res = await fetch('/steam-api/IPlayerService/GetOwnedGames/v1/?include_appinfo=true')
             const data = await res.json()
             setGames(data.response.games.sort((a, b) => b.playtime_forever - a.playtime_forever))
         }
